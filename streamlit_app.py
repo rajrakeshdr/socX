@@ -1,48 +1,39 @@
 import streamlit as st
+import random
 
-# Title of the app
-st.title("AI-Powered UI Test")
+# Dummy AI function (replace with an actual AI-powered API call like OpenAI GPT)
+def get_ai_response(query):
+    # Example responses to simulate AI-generated results
+    responses = [
+        "AI is a branch of computer science that deals with the simulation of intelligent behavior in machines.",
+        "Machine learning is a subset of AI that uses statistical methods to allow machines to improve with experience.",
+        "AI is transforming industries from healthcare to finance, with applications such as predictive analytics, automation, and smart assistants."
+    ]
+    return random.choice(responses)
 
-# Text section with a brief description
-st.write("""
-    This is a simple Streamlit app to test the AI-powered UI generated.
-    Feel free to interact with the elements below!
-""")
+# Streamlit layout and styling
+st.set_page_config(page_title="AI-Powered Search", page_icon=":mag_right:", layout="centered")
 
-# Adding a header
-st.header("Interactive UI")
+# Page header
+st.title("AI-Powered Search")
+st.markdown("#### Get relevant answers from the web using AI.")
 
-# Creating a button that changes text when clicked
-if st.button('Click Me'):
-    st.write("Button clicked! 🎉")
+# Input search query
+query = st.text_input("Ask a question...", "")
 
-# Creating a text input box
-name = st.text_input("Enter your name:")
+# Display search button and handle input
+if st.button("Search") and query:
+    # Simulate AI response (replace with a real AI API)
+    response = get_ai_response(query)
 
-# Display text based on input
-if name:
-    st.write(f"Hello, {name}! 👋")
+    # Display the response
+    st.markdown("### AI Response")
+    st.write(response)
+elif st.button("Search") and not query:
+    st.warning("Please enter a query to search!")
 
-# Create a slider for user interaction
-age = st.slider("Select your age", 0, 100, 25)
-st.write(f"You are {age} years old.")
-
-# Add an image (optional: you can upload an image or add your UI components here)
-st.image("https://www.streamlit.io/images/brand/streamlit-mark-color.svg", width=200)
-
-# Display a simple chart (optional)
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Generate some sample data
-data = pd.DataFrame({
-    'x': np.linspace(0, 10, 100),
-    'y': np.sin(np.linspace(0, 10, 100))
-})
-
-# Plotting the chart
-st.line_chart(data)
-
-# Footer
-st.write("Thanks for testing the app! 🎉")
+# Footer (optional)
+st.markdown("---")
+st.markdown(
+    "Made with ❤️ | [Privacy Policy](#)"
+)

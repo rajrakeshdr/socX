@@ -107,14 +107,16 @@ st.markdown("#### Get relevant answers from the web using AI.")
 query = st.text_input("Ask a question...", "", key="search_input")
 
 # Display search button and handle input with a unique key
-if st.button("Search", key="search_button") and query:
+search_button = st.button("Search", key="search_button")
+
+if search_button and query:
     # Simulate AI response (replace with a real AI API)
     response = get_ai_response(query)
 
     # Display the response
     st.markdown("### AI Response")
     st.write(response)
-elif st.button("Search", key="search_button") and not query:
+elif search_button and not query:
     st.warning("Please enter a query to search!")
 
 # Footer (optional)
